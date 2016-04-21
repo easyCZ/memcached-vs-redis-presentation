@@ -21,6 +21,7 @@ import {
   Spectacle,
   Text
 } from "spectacle";
+import Splash from './splash.js';
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -46,29 +47,31 @@ const images = {
 preloader(images);
 
 const theme = createTheme({
-  primary: "#ff4081"
+  primary: "#FEFEFE"
 });
 
 export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
-          <Slide transition={["zoom"]} bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle
+        <Deck transition={["zoom", "slide"]} transitionDuration={500} progress="pacman">
+
+          <Slide transition={["zoom"]} bgColor="#243848">
+            <Heading size={1} fit caps textColor="#e8b730">
+              Memcached vs Redis
             </Heading>
             <Heading size={1} fit caps>
-              A ReactJS Presentation Library
+              Benchmarking in Memory Caches
             </Heading>
-            <Heading size={1} fit caps textColor="black">
-              Where You Can Write Your Decks In JSX
-            </Heading>
-            <Link href="https://github.com/FormidableLabs/spectacle">
-              <Text bold caps textColor="tertiary">View on Github</Text>
-            </Link>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+
+            <Appear fid="1">
+              <Text fit textColor="#e86830" padding={20}>
+                How does Memcached performance compare to Redis on a common feature set?
+              </Text>
+            </Appear>
+
           </Slide>
+
           <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
             <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
             <Heading size={2} caps fit textColor="primary" textFont="primary">
